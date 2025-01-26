@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Censor Plans</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pricing-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .pricing-card {
+      background: linear-gradient(145deg, #1e1e1e, #2b2b2b);
+      border-radius: 15px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease, border 0.3s ease;
+      cursor: pointer;
+    }
+
+    .pricing-card:hover {
+      transform: scale(1.05);
+      border: 2px solid #4caf50;
+      box-shadow: 0 0 20px #4caf50;
+    }
+
+    .pricing-card.highlighted {
+      border: none;
+    }
+
+    .pricing-card h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #ffcc00;
+    }
+
+    .pricing-card p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      color: #4caf50;
+      margin-bottom: 20px;
+    }
+
+    .price span {
+      font-size: 16px;
+      color: #aaa;
+    }
+
+    .price img {
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      margin-left: 5px;
+      background: none;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+
+    ul li {
+      margin: 10px 0;
+      color: #ddd;
+    }
+
+    .addons {
+      text-align: center;
+      margin-top: 40px;
+      z-index: 2;
+    }
+
+    .addons h3 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+
+    .addons ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .addons ul li {
+      background-color: #1e1e1e;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #aaa;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .addons ul li:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 255, 0, 0.6);
+      background-color: #2b2b2b;
+      color: #fff;
+    }
+
+    /* Snowflake Styles */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: #fff;
+      font-size: 1em;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0.2;
+      }
+    }
+
+    .loading-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 20px;
+      z-index: 9999;
+      display: none;
+    }
+
+    .loading-circle {
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-top: 5px solid #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="pricing-container">
+    <div class="pricing-card" onclick="handleCardClick('https://www.roblox.com/game-pass/1017694355/Advanced', 'Advanced')">
+      <h2>Advanced</h2>
+      <p>Best for casual users</p>
+      <div class="price">
+        $15 <span>or 1200RBX
+      </div>
+      <ul>
+        <li>2 Minute Cooldown</li>
+        <li>Unlimited Bot Access</li>
+        <li>1 Concurrent Crash</li>
+        <li>A̶b̶i̶l̶i̶t̶y̶ t̶o̶ C̶r̶a̶s̶h̶ P̶r̶i̶v̶a̶t̶e̶ S̶e̶r̶v̶e̶r̶s̶ / H̶u̶b̶s̶</li>
+        <li>A̶P̶I̶ A̶c̶c̶e̶s̶s̶</li>
+      </ul>
+    </div>
+    <div class="pricing-card" onclick="handleCardClick('https://www.roblox.com/game-pass/1017810283/Enterprise', 'Enterprise')">
+      <h2>Enterprise</h2>
+      <p>Best for frequent users</p>
+      <div class="price">
+        $25 <span>or 1500RBX
+      </div>
+      <ul>
+        <li>No Cooldown</li>
+        <li>Unlimited Bot Access</li>
+        <li>5 Concurrent Crashers</li>
+        <li>Ability to Crash Private Servers / Hubs</li>
+        <li>API Access</li>
+      </ul>
+    </div>
+    <div class="pricing-card" onclick="handleCardClick('https://www.roblox.com/game-pass/1017318116/Source', 'Custom')">
+      <h2>Source Code</h2>
+      <p>Best for Resellers</p>
+      <div class="price">
+        100$
+      </div>
+      <ul>
+        <li>? Cooldown</li>
+        <li>Unlimited Bot/Tool Source Code Access</li>
+        <li>? Concurrent</li>
+        <li>Ability to Crash Private Servers / Hubs</li>
+        <li>API Access</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="addons">
+    <h3>Addons (one-time payments)</h3>
+    <ul>
+      <li onclick="handleCardClick('https://www.roblox.com/game-pass/1017558378/No-cooldown', '0 Minute Cooldown')">0 Minute Cooldown - $10 Or 500RBX</li>
+      <li onclick="handleCardClick('https://www.roblox.com/game-pass/1017426691/Extra-Concurrent', '1 Extra Concurrent')">1 Extra Concurrent - $2 or 80RBX</li>
+      <li onclick="handleCardClick('https://www.roblox.com/game-pass/1017422640/AutoKill', 'Auto Kill / Kill Game')">Auto Kill / Kill Game - $40 or 4000RBX</li>
+      <li onclick="handleCardClick('https://www.roblox.com/game-pass/1017770327/Auto-Snipe', 'Auto Snipe')">Auto Snipe - $15 or 1500RBX</li>
+      <li onclick="handleCardClick('https://www.roblox.com/game-pass/1017672439/Blacklist', 'Game Blacklist')">Game Blacklist - $25 or 2500RBX</li>
+    </ul>
+  </div>
+
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-circle"></div>
+    Waiting For Purchase Confirmation
+  </div>
+
+  <!-- Snowflake Animation -->
+  <script>
+    const body = document.body;
+
+    const createSnowflake = () => {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.textContent = '❄';
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+      snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+      body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000);
+    };
+
+    setInterval(createSnowflake, 20);
+
+    function handleCardClick(url, item) {
+      window.open(url, '_blank');
+      const loadingScreen = document.getElementById('loadingScreen');
+      loadingScreen.style.display = 'flex';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+        alert(`${item} purchase flow complete.`);
+      }, 10000);
+    }
+  </script>
+</body>
+</html>
